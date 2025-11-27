@@ -1,6 +1,6 @@
 // Admin.scss - Stiluri pentru pagina de administrare
-@import '../styles/variables';
-@import '../styles/mixins';
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
 
 // Poți să adaugi stilurile tale aici
 // Exemplu de structură:
