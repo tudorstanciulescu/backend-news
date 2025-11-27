@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -9,7 +10,8 @@ app.use(cors());
 // Conectare MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb+srv://tudorstanciulescu:DontShareThisPassword@news.flryfbd.mongodb.net/news?retryWrites=true&w=majority&appName=News", {
+    const mongoUri = process.env.MONGODB_URI || "mongodb+srv://tudorstanciulescu:DontShareThisPassword@news.flryfbd.mongodb.net/news?retryWrites=true&w=majority&appName=News";
+    await mongoose.connect(mongoUri, {
       serverSelectionTimeoutMS: 5000, // Timeout după 5 secunde
     });
     console.log("✅ Conectat la MongoDB - Baza de date: news");
@@ -29,4 +31,5 @@ connectDB();
 app.use("/auth", require("./routes/auth"));
 app.use("/news", require("./routes/news"));
 
-app.listen(5000, () => console.log("🚀 Server pornit pe portul 5000"));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`🚀 Server pornit pe portul ${PORT}`));
