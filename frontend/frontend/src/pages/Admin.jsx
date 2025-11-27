@@ -27,7 +27,7 @@ export default function Admin() {
 
   const loadNews = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/news");
+      const res = await axios.get("https://backend-news-tr9k.onrender.com/news");
       setNews(res.data);
     } catch (err) {
       console.error("Eroare la încărcarea știrilor:", err);
@@ -42,7 +42,7 @@ export default function Admin() {
 
     try {
       await axios.post(
-        "http://localhost:5000/news",
+        "https://backend-news-tr9k.onrender.com/news",
         { title, content },
         { headers: { Authorization: token } }
       );
@@ -59,7 +59,7 @@ export default function Admin() {
   const deleteNews = async (id) => {
     if (window.confirm("Sigur vrei să ștergi această știre?")) {
       try {
-        await axios.delete(`http://localhost:5000/news/${id}`, {
+        await axios.delete(`https://backend-news-tr9k.onrender.com/news/${id}`, {
           headers: { Authorization: token }
         });
         alert("✅ Știre ștearsă cu succes!");
@@ -89,7 +89,7 @@ export default function Admin() {
     }
 
     try {
-      await axios.post("http://localhost:5000/auth/register", {
+      await axios.post("https://backend-news-tr9k.onrender.com/auth/register", {
         username: newAdminUsername,
         password: newAdminPassword
       });
@@ -113,7 +113,7 @@ export default function Admin() {
 
   const loadAdmins = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/auth/users");
+      const res = await axios.get("https://backend-news-tr9k.onrender.com/auth/users");
       setAdminList(res.data);
     } catch (err) {
       console.error("Eroare la încărcarea adminilor:", err);
