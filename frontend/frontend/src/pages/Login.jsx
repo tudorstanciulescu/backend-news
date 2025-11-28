@@ -10,7 +10,7 @@ export default function Login() {
 
   const login = async () => {
     try {
-      const res = await axios.post("https://backend-news-zj55.onrender.com/auth/login", {
+      const res = await axios.post("https://backend-news-ww6b.onrender.com/auth/login", {
         username,
         password,
       });

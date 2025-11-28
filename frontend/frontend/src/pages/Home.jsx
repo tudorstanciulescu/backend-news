@@ -7,7 +7,7 @@ export default function Home() {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    axios.get("https://backend-news-zj55.onrender.com/news").then(res => setNews(res.data));
+    axios.get("https://backend-news-ww6b.onrender.com/news").then(res => setNews(res.data));
   }, []);
 
   return (

@@ -17,22 +17,31 @@ export default function Admin() {
   const [showAdminList, setShowAdminList] = useState(false);
   const [adminList, setAdminList] = useState([]);
 
-  useEffect(() => {
-    if (!token) {
-      navigate("/login");
-      return;
-    }
-    loadNews();
-  }, [token, navigate]);
-
   const loadNews = async () => {
     try {
-      const res = await axios.get("https://backend-news-zj55.onrender.com/news");
+      const res = await axios.get("https://backend-news-ww6b.onrender.com/news");
       setNews(res.data);
     } catch (err) {
       console.error("Eroare la încărcarea știrilor:", err);
     }
   };
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+    
+    const initNews = async () => {
+      try {
+        const res = await axios.get("https://backend-news-ww6b.onrender.com/news");
+        setNews(res.data);
+      } catch (err) {
+        console.error("Eroare la încărcarea știrilor:", err);
+      }
+    };
+    initNews();
+  }, [token, navigate]);
 
   const postNews = async () => {
     if (!title || !content) {
@@ -42,7 +51,7 @@ export default function Admin() {
 
     try {
       await axios.post(
-        "https://backend-news-zj55.onrender.com/news",
+        "https://backend-news-ww6b.onrender.com/news",
         { title, content },
         { headers: { Authorization: token } }
       );
@@ -59,7 +68,7 @@ export default function Admin() {
   const deleteNews = async (id) => {
     if (window.confirm("Sigur vrei să ștergi această știre?")) {
       try {
-        await axios.delete(`https://backend-news-zj55.onrender.com/news/${id}`, {
+        await axios.delete(`https://backend-news-ww6b.onrender.com/news/${id}`, {
           headers: { Authorization: token }
         });
         alert("✅ Știre ștearsă cu succes!");
@@ -89,7 +98,7 @@ export default function Admin() {
     }
 
     try {
-      await axios.post("https://backend-news-zj55.onrender.com/auth/register", {
+      await axios.post("https://backend-news-ww6b.onrender.com/auth/register", {
         username: newAdminUsername,
         password: newAdminPassword
       });
@@ -113,7 +122,7 @@ export default function Admin() {
 
   const loadAdmins = async () => {
     try {
-      const res = await axios.get("https://backend-news-zj55.onrender.com/auth/users");
+      const res = await axios.get("https://backend-news-ww6b.onrender.com/auth/users");
       setAdminList(res.data);
     } catch (err) {
       console.error("Eroare la încărcarea adminilor:", err);
@@ -227,7 +236,7 @@ export default function Admin() {
                 <p style={{ color: "#666" }}>Se încarcă...</p>
               ) : (
                 <div style={{ display: "grid", gap: "10px" }}>
-                  {adminList.map((admin, index) => (
+                  {adminList.map((admin) => (
                     <div key={admin._id} style={{
                       padding: "15px",
                       backgroundColor: "#f8f9fa",
