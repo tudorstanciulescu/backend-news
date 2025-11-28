@@ -2,13 +2,22 @@ const router = require("express").Router();
 const News = require("../models/News");
 const jwt = require("jsonwebtoken");
 
+// JWT Secret din environment variable
+const JWT_SECRET = process.env.JWT_SECRET || "secret123";
+
 // middleware verificare token
 function verify(req, res, next) {
   const token = req.headers.authorization;
   if (!token) return res.status(401).json("Neautorizat");
 
-  jwt.verify(token, "secret123", (err, data) => {
-    if (err) return res.status(401).json("Token invalid");
+  jwt.verify(token, JWT_SECRET, (err, data) => {
+    if (err) {
+      // Token expirat sau invalid
+      if (err.name === "TokenExpiredError") {
+        return res.status(401).json({ error: "Token expirat", expired: true });
+      }
+      return res.status(401).json("Token invalid");
+    }
     req.user = data;
     next();
   });

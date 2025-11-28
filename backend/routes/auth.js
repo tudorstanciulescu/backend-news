@@ -3,6 +3,10 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+// JWT Secret din environment variable
+const JWT_SECRET = process.env.JWT_SECRET || "secret123";
+const TOKEN_EXPIRY = "7d"; // Token expiră în 7 zile
+
 // Register (pentru a crea admin)
 router.post("/register", async (req, res) => {
   try {
@@ -29,9 +33,17 @@ router.post("/login", async (req, res) => {
   const valid = await bcrypt.compare(req.body.password, user.password);
   if (!valid) return res.status(400).json("Parola greșită");
 
-  const token = jwt.sign({ id: user._id }, "secret123");
+  const token = jwt.sign(
+    { id: user._id, username: user.username }, 
+    JWT_SECRET,
+    { expiresIn: TOKEN_EXPIRY }
+  );
 
-  res.json({ token });
+  res.json({ 
+    token,
+    expiresIn: TOKEN_EXPIRY,
+    user: { id: user._id, username: user.username }
+  });
 });
 
 // Get all users (pentru admin dashboard)

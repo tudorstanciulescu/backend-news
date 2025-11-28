@@ -17,6 +17,18 @@ export default function Admin() {
   const [showAdminList, setShowAdminList] = useState(false);
   const [adminList, setAdminList] = useState([]);
 
+  // Funcție pentru a verifica dacă token-ul a expirat
+  const handleTokenExpired = (err) => {
+    if (err.response?.status === 401 && err.response?.data?.expired) {
+      alert("⏰ Sesiunea ta a expirat. Te rugăm să te loghezi din nou.");
+      localStorage.removeItem("token");
+      setToken(null);
+      navigate("/login");
+      return true;
+    }
+    return false;
+  };
+
   const loadNews = async () => {
     try {
       const res = await axios.get("https://backend-news-ww6b.onrender.com/news");
@@ -60,8 +72,10 @@ export default function Admin() {
       setContent("");
       loadNews();
     } catch (err) {
-      alert("❌ Eroare la postarea știrii!");
-      console.error(err);
+      if (!handleTokenExpired(err)) {
+        alert("❌ Eroare la postarea știrii!");
+        console.error(err);
+      }
     }
   };
 
@@ -74,8 +88,10 @@ export default function Admin() {
         alert("✅ Știre ștearsă cu succes!");
         loadNews();
       } catch (err) {
-        alert("❌ Eroare la ștergerea știrii!");
-        console.error(err);
+        if (!handleTokenExpired(err)) {
+          alert("❌ Eroare la ștergerea știrii!");
+          console.error(err);
+        }
       }
     }
   };
