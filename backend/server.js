@@ -144,7 +144,7 @@ const BOOKS = [
   id: "gradina-lui-nini",
   title: "Grădina lui Nini",
   subtitle: "O poveste despre flori și grijă",
-  cover: "/images/gradina-lui-nini/cover.png",
+  cover: "/images/gradina-lui-nini/cover.jpg",
   pages: [
     {
       id: 1,
@@ -164,7 +164,7 @@ const BOOKS = [
     },
     {
       id: 3,
-      image: "/images/gradina-lui-nini/page-03-soil.png",
+      image: "/images/gradina-lui-nini/page-03-soil.jpg",
       lines: [
         "Nini pregătește solul.",
         "Pământul trebuie să fie afânat.",
@@ -172,14 +172,14 @@ const BOOKS = [
     },
     {
       id: 4,
-      image: "/images/gradina-lui-nini/page-04-repot.png",
+      image: "/images/gradina-lui-nini/page-04-repot.jpg",
       lines: [
         "Florile tinere au nevoie de un cămin nou.",
       ],
     },
     {
       id: 5,
-      image: "/images/gradina-lui-nini/page-05-fertilize.png",
+      image: "/images/gradina-lui-nini/page-05-fertilize.jpg",
       lines: [
         "Nini pune îngrășământ natural.",
         "Pentru a le face puternice.",
@@ -187,14 +187,14 @@ const BOOKS = [
     },
     {
       id: 6,
-      image: "/images/gradina-lui-nini/page-06-climbing.png",
+      image: "/images/gradina-lui-nini/page-06-climbing.jpg",
       lines: [
         "Florile agățătoare au nevoie de ajutor.",
       ],
     },
     {
       id: 7,
-      image: "/images/gradina-lui-nini/page-07-weeds.png",
+      image: "/images/gradina-lui-nini/page-07-weeds.jpg",
       lines: [
         "Secretele grădinii:",
         "buruienile trebuie smulse.",
@@ -202,7 +202,7 @@ const BOOKS = [
     },
     {
       id: 8,
-      image: "/images/gradina-lui-nini/page-08-check-soil.png",
+      image: "/images/gradina-lui-nini/page-08-check-soil.jpg",
       lines: [
         "Să verificăm pământul.",
         "Este umed și bun?",
@@ -227,7 +227,7 @@ const BOOKS = [
     },
     {
       id: 11,
-      image: "/images/gradina-lui-nini/page-11-water-b.png",
+      image: "/images/gradina-lui-nini/page-11-water-b.jpg",
       lines: [
         "Florile sunt setoase din nou.",
         "Timpul pentru încă o udare blândă.",
@@ -243,7 +243,7 @@ const BOOKS = [
     },
     {
       id: 13,
-      image: "/images/gradina-lui-nini/page-13-lunch.png",
+      image: "/images/gradina-lui-nini/page-13-lunch.jpg",
       lines: [
         "O mică pauză de prânz.",
         "Soarele este sus pe cer.",
@@ -298,18 +298,18 @@ const BOOKS = [
   id: "ferma-lui-nini",
   title: "Ferma lui Nini",
   subtitle: "O poveste despre animale și grija pentru pământ",
-  cover: "/images/ferma-lui-nini/cover.png",
+  cover: "/images/ferma-lui-nini/cover.jpg",
   pages: [
     {
       id: 1,
-      image: "/images/ferma-lui-nini/page-01-sheep.png",
+      image: "/images/ferma-lui-nini/page-01-sheep.jpg",
       lines: [
         "Primul lui prieten la fermă a fost mielul cel mic.",
       ],
     },
     {
       id: 2,
-      image: "/images/ferma-lui-nini/page-02-cow.png",
+      image: "/images/ferma-lui-nini/page-02-cow.jpg",
       lines: [
         "Și animalele de la fermă sunt fericite cu Nini.",
         "„Fânul de la fermă e cel mai gustos, Nini!”",
@@ -317,14 +317,14 @@ const BOOKS = [
     },
     {
       id: 3,
-      image: "/images/ferma-lui-nini/page-03-birds.png",
+      image: "/images/ferma-lui-nini/page-03-birds.jpg",
       lines: [
         "Nini le dă păsărilor să mănânce grăunțe din diferite cereale.",
       ],
     },
     {
       id: 4,
-      image: "/images/ferma-lui-nini/page-04-pigs.png",
+      image: "/images/ferma-lui-nini/page-04-pigs.jpg",
       lines: [
         "Nini acum este la porci…",
         "…care sunt cei mai pofticioși.",
@@ -332,7 +332,7 @@ const BOOKS = [
     },
     {
       id: 5,
-      image: "/images/ferma-lui-nini/page-05-horse.png",
+      image: "/images/ferma-lui-nini/page-05-horse.jpg",
       lines: [
         "Nini acum este în grajdul calului,",
         "dându-i apă proaspătă.",
@@ -341,7 +341,7 @@ const BOOKS = [
     },
     {
       id: 6,
-      image: "/images/ferma-lui-nini/page-06-dogcat.png",
+      image: "/images/ferma-lui-nini/page-06-dogcat.jpg",
       lines: [
         "După aceea, Nini s-a dus să le dea de mâncare câinelui și pisicii lui.",
         "„Mulțumesc mult, Nini! Ce mâncare gustoasă!”",
@@ -350,7 +350,7 @@ const BOOKS = [
     },
     {
       id: 7,
-      image: "/images/ferma-lui-nini/page-07-walk.png",
+      image: "/images/ferma-lui-nini/page-07-walk.jpg",
       lines: [
         "O plimbare binevenită după masa de prânz.",
         "„Mergem la plimbare, ce bine!”",
@@ -359,7 +359,7 @@ const BOOKS = [
     },
     {
       id: 8,
-      image: "/images/ferma-lui-nini/page-08-clean-birds.png",
+      image: "/images/ferma-lui-nini/page-08-clean-birds.jpg",
       lines: [
         "Înainte să vină seara Nini trebuie să facă curat la animale.",
         "Începe cu păsările.",
@@ -367,14 +367,14 @@ const BOOKS = [
     },
     {
       id: 9,
-      image: "/images/ferma-lui-nini/page-09-clean-pigs.png",
+      image: "/images/ferma-lui-nini/page-09-clean-pigs.jpg",
       lines: [
         "Și continuă curățenia la restul animalelor.",
       ],
     },
     {
       id: 10,
-      image: "/images/ferma-lui-nini/page-10-sheeps.png",
+      image: "/images/ferma-lui-nini/page-10-sheeps.jpg",
       lines: [
         "Oile lui Nini sunt fericite în câmpul verde.",
         "„Lăsați-o să se liniștească!”",
@@ -382,7 +382,7 @@ const BOOKS = [
     },
     {
       id: 11,
-      image: "/images/ferma-lui-nini/page-11-milk.png",
+      image: "/images/ferma-lui-nini/page-11-milk.jpg",
       lines: [
         "Zizi e o vacă bună.",
         "Îmi dă lapte proaspăt.",
