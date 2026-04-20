@@ -391,6 +391,14 @@ const BOOKS = [
     },
   ],
 },
+{
+  id: "casa-lui-nini",
+  title: "Casa lui Nini",
+  subtitle: "În curând",
+  cover: "/images/casa-lui-nini/cover.jpg",
+  locked: true,
+  pages: [],
+},
 ];
 
 // Listă de cărți disponibile (fără pagini — ca să rămână lightweight).
@@ -402,6 +410,7 @@ app.get("/api/books", requireAuth, (req, res) => {
 app.get("/api/books/:id", requireAuth, (req, res) => {
   const book = BOOKS.find((b) => b.id === req.params.id);
   if (!book) return res.status(404).json({ error: "Carte negăsită." });
+  if (book.locked) return res.status(423).json({ error: "Cartea nu e încă disponibilă." });
   res.json(book);
 });
 

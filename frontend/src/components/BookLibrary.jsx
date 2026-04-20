@@ -54,18 +54,23 @@ export default function BookLibrary({ onSelect }) {
             {books.map((b) => (
               <button
                 key={b.id}
-                className="book-card"
-                onClick={() => onSelect(b.id)}
-                aria-label={`Deschide cartea: ${b.title}`}
+                className={`book-card${b.locked ? " book-card--locked" : ""}`}
+                onClick={() => !b.locked && onSelect(b.id)}
+                disabled={b.locked}
+                aria-label={b.locked ? `${b.title} — în curând` : `Deschide cartea: ${b.title}`}
               >
                 <div
                   className="book-card__cover"
                   style={{ backgroundImage: `url(${b.cover})` }}
-                />
+                >
+                  {b.locked && <span className="book-card__lock" aria-hidden="true">🔒</span>}
+                </div>
                 <div className="book-card__meta">
                   <h3 className="book-card__title">{b.title}</h3>
                   {b.subtitle && <p className="book-card__subtitle">{b.subtitle}</p>}
-                  <span className="book-card__count">{b.pageCount} pagini</span>
+                  <span className="book-card__count">
+                    {b.locked ? "În curând" : `${b.pageCount} pagini`}
+                  </span>
                 </div>
               </button>
             ))}
