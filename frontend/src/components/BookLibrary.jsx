@@ -52,31 +52,62 @@ export default function BookLibrary({ onSelect }) {
         {books && (
           <div className="library-grid">
             {books.map((b) => (
-              <button
-                key={b.id}
-                className={`book-card${b.locked ? " book-card--locked" : ""}`}
-                onClick={() => !b.locked && onSelect(b.id)}
-                disabled={b.locked}
-                aria-label={b.locked ? `${b.title} — în curând` : `Deschide cartea: ${b.title}`}
-              >
-                <div
-                  className="book-card__cover"
-                  style={{ backgroundImage: `url(${b.cover})` }}
-                >
-                  {b.locked && <span className="book-card__lock" aria-hidden="true">🔒</span>}
-                </div>
-                <div className="book-card__meta">
-                  <h3 className="book-card__title">{b.title}</h3>
-                  {b.subtitle && <p className="book-card__subtitle">{b.subtitle}</p>}
-                  <span className="book-card__count">
-                    {b.locked ? "În curând" : `${b.pageCount} pagini`}
-                  </span>
-                </div>
-              </button>
+              <BookCard key={b.id} book={b} onSelect={onSelect} />
             ))}
           </div>
         )}
       </main>
     </div>
+  );
+}
+
+function BookCard({ book, onSelect }) {
+  const [wiggle, setWiggle] = useState(false);
+
+  function handleClick() {
+    if (!book.locked) {
+      onSelect(book.id);
+      return;
+    }
+    // Locked: trigger wiggle animation on lock icon + Coming Soon label
+    setWiggle(false);
+    requestAnimationFrame(() => setWiggle(true));
+  }
+
+  return (
+    <button
+      className={`book-card${book.locked ? " book-card--locked" : ""}`}
+      onClick={handleClick}
+      aria-label={book.locked ? `${book.title} — coming soon` : `Deschide cartea: ${book.title}`}
+    >
+      <div
+        className="book-card__cover"
+        style={{ backgroundImage: `url(${book.cover})` }}
+      >
+        {book.locked && (
+          <div className="book-card__locked-overlay">
+            <span
+              className={`book-card__lock${wiggle ? " book-card__lock--wiggle" : ""}`}
+              aria-hidden="true"
+              onAnimationEnd={() => setWiggle(false)}
+            >
+              🔒
+            </span>
+            <span
+              className={`book-card__coming${wiggle ? " book-card__coming--wiggle" : ""}`}
+            >
+              Coming Soon...
+            </span>
+          </div>
+        )}
+      </div>
+      <div className="book-card__meta">
+        <h3 className="book-card__title">{book.title}</h3>
+        {book.subtitle && <p className="book-card__subtitle">{book.subtitle}</p>}
+        {!book.locked && (
+          <span className="book-card__count">{book.pageCount} pagini</span>
+        )}
+      </div>
+    </button>
   );
 }

@@ -394,7 +394,6 @@ const BOOKS = [
 {
   id: "casa-lui-nini",
   title: "Casa lui Nini",
-  subtitle: "În curând",
   cover: "/images/casa-lui-nini/cover.jpg",
   locked: true,
   pages: [],
