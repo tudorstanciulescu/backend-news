@@ -60,9 +60,6 @@ export default function LoginGate() {
           </svg>
         </div>
 
-        <h1 className="login-title">Poveștile lui Nini</h1>
-        <p className="login-subtitle">Povești despre flori, animale și grijă</p>
-
         <div className="divider" aria-hidden="true">
           <span className="divider-line" />
           <span className="divider-icon">✿</span>
