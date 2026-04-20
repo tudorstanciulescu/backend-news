@@ -30,13 +30,15 @@ export default function BookLibrary({ onSelect }) {
           <span className="brand-text">Cărțile lui Nini</span>
         </div>
         <div className="library-right">
-          <span className="user-chip">Bună, {user?.displayName || user?.username}</span>
           <button className="btn-logout" onClick={logout}>Ieși</button>
         </div>
       </header>
 
       <main className="library-main">
-        <h1 className="library-title">Alege o carte</h1>
+        <h1 className="library-title">
+          <span className="library-greeting">Bună, {user?.displayName || user?.username}</span>
+          Alege o carte!
+        </h1>
 
         {error && <p className="library-error">🥀 {error}</p>}
 
